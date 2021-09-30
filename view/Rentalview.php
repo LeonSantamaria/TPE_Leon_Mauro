@@ -8,7 +8,10 @@ class RentalView{
     }
     function MostrarInicio($rental){
         $this->smarty->assign('rental', $rental);
+        $this->smarty->display('template/head.tpl');
+        $this->smarty->display('template/nav.tpl');
         $this->smarty->display('template/for.tpl');
+        $this->smarty->display('template/footer.tpl');
     }
 
 }
