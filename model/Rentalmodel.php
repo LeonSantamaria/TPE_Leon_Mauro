@@ -12,5 +12,11 @@ class RentalModel{
         $rent = $query->fetchAll(PDO::FETCH_OBJ);
         return $rent;   
     }
+    function GetById($id){
+        $query = $this->db->prepare('SELECT * FROM alojamiento Where Id=?');
+        $query->execute(array($id)); 
+        $rent = $query->fetchAll(PDO::FETCH_OBJ);
+        return $rent;   
+    }
 }
 

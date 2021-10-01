@@ -109,3 +109,24 @@ th {
   td.text-right {
     text-align: right;
   }
+.publicacion-detallada{
+  text-align: center;
+  margin: auto;
+  
+}
+.publicacion-detallada h1{
+  font-family: Verdana;
+  font-weight: 700;
+  color:goldenrod; 
+}
+.publicacion-detallada h4{
+  background-color: black;
+  color: rgb(0, 255, 0);
+}
+.publicacion-detallada h3{
+  color: white;
+  background-color: rgb(121, 187, 22);
+  border-radius: 25%;
+  margin: auto;
+  width: max-content;
+}

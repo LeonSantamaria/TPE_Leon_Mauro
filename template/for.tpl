@@ -3,6 +3,7 @@
             <tr>
                 <th>Título</th>
                 <th>Contacto</th>
+                <th>VerMas</th>
             </tr>
         <thead>
         <tbody>
@@ -10,6 +11,8 @@
     <tr>
                 <td>{$rent->Titulo}</td>
                 <td>{$rent->Contacto}</td>
+                <td><a href='ShowDetails/{$rent->Id}'>link</a></td>
+                
     </tr>
 {/foreach}
 </tbody>

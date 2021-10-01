@@ -15,4 +15,9 @@ class RentalController{
         $rents = $this->model->GetRental();
         $this->view->MostrarInicio($rents);
     }
+    public function ShowDetails($id){
+        $model = $this->model->GetById($id);
+        $this->view->MostrarDetalles($model);
+
+    }
 }

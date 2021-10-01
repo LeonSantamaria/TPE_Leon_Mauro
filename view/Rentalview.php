@@ -13,5 +13,12 @@ class RentalView{
         $this->smarty->display('template/for.tpl');
         $this->smarty->display('template/footer.tpl');
     }
+    function MostrarDetalles($detalles){
+        $this->smarty->assign('detalles', $detalles);
+        $this->smarty->display('template/head.tpl');
+        $this->smarty->display('template/nav.tpl');
+        $this->smarty->display('template/detalles.tpl');
+        $this->smarty->display('template/footer.tpl');
+    }
 
 }

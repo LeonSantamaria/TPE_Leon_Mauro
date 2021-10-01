@@ -13,6 +13,9 @@ switch ($params[0]) {
     case 'home':  
         $rentalController->ShowHome();
         break;
+    case 'ShowDetails':
+        $rentalController->ShowDetails($params[1]); 
+        break;
 
     default:
       
