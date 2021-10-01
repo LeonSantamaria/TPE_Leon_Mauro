@@ -130,3 +130,13 @@ th {
   margin: auto;
   width: max-content;
 }
+.clasificados{
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  
+}
+.clasificados .card{
+  margin: 1rem;
+  
+}
