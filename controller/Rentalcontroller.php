@@ -13,7 +13,8 @@ class RentalController{
     }
     public function ShowHome(){
         $rents = $this->model->GetRental();
-        $this->view->MostrarInicio($rents);
+        $categoria = $this->model->GetCategorias();
+        $this->view->MostrarInicio($rents , $categoria);
     }
     public function ShowDetails($id){
         $model = $this->model->GetById($id);

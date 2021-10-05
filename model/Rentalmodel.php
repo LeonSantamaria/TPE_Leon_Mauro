@@ -18,5 +18,11 @@ class RentalModel{
         $rent = $query->fetchAll(PDO::FETCH_OBJ);
         return $rent;   
     }
+    function GetCategorias(){
+        $query = $this->db->prepare('SELECT DISTINCT Tipo FROM alojamiento');
+        $query->execute();
+        $genre = $query->fetchAll(PDO::FETCH_OBJ);
+        return $genre;
+    }
 }
 
