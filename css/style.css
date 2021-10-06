@@ -141,3 +141,13 @@ th {
   margin: 1rem;
   
 }
+.categorias{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+.categorias a{
+  width: 5rem;
+  margin: 0.5rem;
+  
+}

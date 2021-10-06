@@ -1,7 +1,7 @@
 <main>
     <h2 class="display-2 text-primary " style="text-align: center;">Catalogo</h2>
     <hr style="width: 50%; margin: auto;">
-            <div class="container">
+            <div class="categorias">
             <h5 class="display-5">Categorias :</h5>
         {foreach from=$categorias item=$categoria }
             <a href="ShowCategory/{$categoria->Tipo}" class="btn btn-outline-primary">{$categoria->Tipo}</a>
