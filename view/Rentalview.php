@@ -11,7 +11,7 @@ class RentalView{
         $this->smarty->assign('rental', $rental);
         $this->smarty->display('template/head.tpl');
         $this->smarty->display('template/nav.tpl');
-        $this->smarty->display('template/for.tpl');
+        $this->smarty->display('template/main.tpl');
         $this->smarty->display('template/footer.tpl');
     }
     function MostrarDetalles($detalles){
@@ -19,6 +19,19 @@ class RentalView{
         $this->smarty->display('template/head.tpl');
         $this->smarty->display('template/nav.tpl');
         $this->smarty->display('template/detalles.tpl');
+        $this->smarty->display('template/footer.tpl');
+    }
+    function MostrarFiltrado($tipo){
+        $this->smarty->assign('tipos', $tipo);
+        $this->smarty->display('template/head.tpl');
+        $this->smarty->display('template/nav.tpl');
+        $this->smarty->display('template/categorias.tpl');
+        $this->smarty->display('template/footer.tpl');
+    }
+    function MostrarAdmin(){
+        $this->smarty->display('template/head.tpl');
+        $this->smarty->display('template/nav.tpl');
+        $this->smarty->display('template/admin.tpl');
         $this->smarty->display('template/footer.tpl');
     }
 

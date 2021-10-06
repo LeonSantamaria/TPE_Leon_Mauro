@@ -16,7 +16,16 @@ switch ($params[0]) {
     case 'ShowDetails':
         $rentalController->ShowDetails($params[1]); 
         break;
-
+    case 'ShowCategory':
+        $rentalController->ShowCategory($params[1]); 
+        break;
+    case 'ShowAdmin':
+        $rentalController->ShowAdmin(); 
+        break;
+    case 'insertarRental':
+        $rentalController->insertarRental(); 
+        break;
+    
     default:
       
         break;

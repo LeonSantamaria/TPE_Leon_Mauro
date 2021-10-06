@@ -4,7 +4,7 @@
                 <h3>Mapa de sitio</h3>
                 <ul class="nodecoration">
                     <li>Inicio</li>
-                    <li>asdasd</li>
+                    <li><a href="ShowAdmin" class="btn btn-dark">Administrar</a></li>
                     <li>asdasd</li>
                 </ul>
             </div>
