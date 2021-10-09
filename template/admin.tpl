@@ -19,7 +19,7 @@
     <input type="text" class="form-control" id="exampleCheck1" name="tipo">
   </div>
    <div class="mb-3 ">
-  <select name="id_ciudad" class="form-select select-admin" aria-label="Default select example">
+  <select name="Ciudad_id" class="form-select select-admin" aria-label="Default select example">
       <option >Seleccione la ciudad</option>
       {foreach from=$categorias item=$categoria }
         <option value="{$categoria->id_ciudad}">{$categoria->ciudad}</option>
