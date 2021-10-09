@@ -26,11 +26,13 @@ class RentalController{
         $this->view->MostrarFiltrado($model);
     }
     public function ShowAdmin(){
-        $this->view->MostrarAdmin();
+        $categorias = $this->model->GetCategoriasfK();
+        $this->view->MostrarAdmin($categorias);
 
     }
     public function insertarRental(){
+        $categorias = $this->model->GetCategoriasFK();
         $this->model->insertRental($_POST['titulo'], $_POST['descripcion'], $_POST['contacto'], $_POST['tipo'],$_POST['id_ciudad']);
-        $this->view->MostrarAdmin();
+        $this->view->MostrarAdmin($categorias);
     }
 }

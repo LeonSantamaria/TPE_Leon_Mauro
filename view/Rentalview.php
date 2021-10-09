@@ -28,7 +28,8 @@ class RentalView{
         $this->smarty->display('template/categorias.tpl');
         $this->smarty->display('template/footer.tpl');
     }
-    function MostrarAdmin(){
+    function MostrarAdmin($categorias){
+        $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('template/head.tpl');
         $this->smarty->display('template/nav.tpl');
         $this->smarty->display('template/admin.tpl');

@@ -10,23 +10,30 @@ class RentalModel{
     
     }
     function GetRental(){
-        $query = $this->db->prepare('SELECT * FROM alojamiento');
+        $query = $this->db->prepare('SELECT * FROM alojamiento JOIN ciudad ON (alojamiento.id_ciudad=ciudad.Ciudad_id) ');
         $query->execute(); 
         $rent = $query->fetchAll(PDO::FETCH_OBJ);
         return $rent;   
     }
     function GetById($id){
-        $query = $this->db->prepare('SELECT * FROM alojamiento Where Id=?');
+        $query = $this->db->prepare('SELECT * FROM alojamiento JOIN ciudad ON (alojamiento.id_ciudad=ciudad.Ciudad_id) Where alojamiento.Id=?');
         $query->execute(array($id)); 
         $rent = $query->fetchAll(PDO::FETCH_OBJ);
         return $rent;   
     }
     function GetCategorias(){
-        $query = $this->db->prepare('SELECT DISTINCT Tipo FROM alojamiento');
+        $query = $this->db->prepare('SELECT DISTINCT Tipo FROM alojamiento ');
         $query->execute();
         $genre = $query->fetchAll(PDO::FETCH_OBJ);
         return $genre;
     }
+    function GetCategoriasFK(){
+        $query = $this->db->prepare('SELECT DISTINCT id_ciudad , ciudad FROM alojamiento JOIN ciudad ON (alojamiento.id_ciudad=ciudad.Ciudad_id)  ');
+        $query->execute();
+        $genre = $query->fetchAll(PDO::FETCH_OBJ);
+        return $genre;
+    }
+
     function CategoryFilter($tipo){
         $query = $this->db->prepare('SELECT * FROM alojamiento Where Tipo=?');
         $query->execute(array($tipo));
