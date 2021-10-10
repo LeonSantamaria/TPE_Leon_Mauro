@@ -7,6 +7,9 @@
             {foreach from=$categorias item=$categoria }
                 <a href="ShowCategory/{$categoria->Tipo}" class="btn btn-outline-primary">{$categoria->Tipo}</a>
             {/foreach}
+
+           
+            
             
         </div>
     <div class="clasificados">

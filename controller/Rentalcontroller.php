@@ -37,7 +37,7 @@ class RentalController{
     }
     public function insertarRental(){
         $categorias = $this->model->GetCategoriasFK();
-        $this->model->insertRental($_POST['titulo'], $_POST['descripcion'], $_POST['contacto'], $_POST['tipo'],$_POST['id_ciudad']);
+        $this->model->insertRental($_POST['titulo'], $_POST['descripcion'], $_POST['contacto'], $_POST['tipo'],$_POST['ciudad']);
         $this->view->MostrarAdmin($categorias);
     }
 }
