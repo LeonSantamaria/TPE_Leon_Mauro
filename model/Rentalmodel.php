@@ -41,7 +41,7 @@ class RentalModel{
         return $category; 
     }
     function insertRental($titulo, $descripcion, $contacto, $tipo, $ciudad){
-        $sentencia = $this->db->prepare("INSERT INTO alojamiento(titulo, descripcion, contacto, tipo, id_ciudad) VALUES(?, ?, ?, ?,?)");
+        $sentencia = $this->db->prepare('INSERT INTO alojamiento(Titulo, Descripcion, Contacto, Tipo, id_ciudad) VALUES(?, ?, ?, ?, ?)');
         $sentencia->execute(array($titulo,$descripcion,$contacto, $tipo , $ciudad));
     }
 }

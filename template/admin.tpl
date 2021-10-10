@@ -18,15 +18,15 @@
     <label for="exampleInputPassword1" class="form-label">Tipo</label>
     <input type="text" class="form-control" id="exampleCheck1" name="tipo">
   </div>
-   <div class="mb-3 ">
-  <select name="Ciudad_id" class="form-select select-admin" aria-label="Default select example">
-      <option >Seleccione la ciudad</option>
-      {foreach from=$categorias item=$categoria }
-        <option value="{$categoria->id_ciudad}">{$categoria->ciudad}</option>
-        
-      {/foreach}
-      
-  </select>
+    <div class="mb-3 ">
+      <select class="form-select select-admin" aria-label="Default select example" name="ciudad">
+          <option >Seleccione la ciudad</option>
+          {foreach from=$categorias item=$categoria }
+            <option value="{$categoria->id_ciudad}">{$categoria->ciudad}</option>
+            
+          {/foreach}
+          
+      </select>
   </div>
     <input type="submit" class="btn btn-light" value="Guardar">
 </form>
