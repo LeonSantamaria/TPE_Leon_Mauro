@@ -78,3 +78,6 @@ main{
 .select-admin{
   margin-bottom: 1%;
 }
+span{
+  align-items: center;
+}

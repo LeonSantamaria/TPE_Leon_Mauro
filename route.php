@@ -25,7 +25,10 @@ switch ($params[0]) {
     case 'insertarRental':
         $rentalController->insertarRental(); 
         break;
-    
+
+    case 'ShowCategoryCiudad':
+        $rentalController->ShowCategoryCiudad($params[1]); 
+        break;
     default:
       
         break;

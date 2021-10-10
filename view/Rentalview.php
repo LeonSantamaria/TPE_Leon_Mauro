@@ -7,6 +7,7 @@ class RentalView{
         $this->smarty = new Smarty();
     }
     function MostrarInicio($rental , $categorias){
+        
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('rental', $rental);
         $this->smarty->display('template/head.tpl');
@@ -22,6 +23,7 @@ class RentalView{
         $this->smarty->display('template/footer.tpl');
     }
     function MostrarFiltrado($tipo){
+        
         $this->smarty->assign('tipos', $tipo);
         $this->smarty->display('template/head.tpl');
         $this->smarty->display('template/nav.tpl');
