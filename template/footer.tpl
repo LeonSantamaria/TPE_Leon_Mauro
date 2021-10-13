@@ -4,7 +4,13 @@
                 <h3>Mapa de sitio</h3>
                 <ul class="nodecoration">
                     <li>Inicio</li>
+                    {if $logueado}
+                        
                     <li><a href="ShowAdmin" class="btn btn-dark">Administrar</a></li>
+                    {/if}
+
+                        
+                   
                     <li>asdasd</li>
                 </ul>
             </div>

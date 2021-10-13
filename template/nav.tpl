@@ -9,8 +9,8 @@
                 <ul class="navbar-nav ms-3">
                     <li class="nav-item  "><a href="#" class="nav-link">Inicio</a></li>
                     <li class="nav-item "><a href="#" class="nav-link">catalogo</a></li>
-                    <li class="nav-item "><a href="#" class="nav-link">Ingreso</a></li>
-                    <li class="nav-item "><a href="#" class="nav-link">Registro</a></li>
+                    <li class="nav-item "><a href="ShowLogin" class="nav-link">Ingreso</a></li>
+                    <li class="nav-item "><a href="ShowRegister" class="nav-link">Registro</a></li>
                     
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link  dropdown-toggle" role="button" data-bs-toggle="dropdown">

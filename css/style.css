@@ -38,12 +38,17 @@ body{
   
   
 }
+.cards{
+  
+  border-radius: 15px;
+}
+
 .categorias{
   display: flex;
   flex-wrap: wrap;
   justify-content:start;
   align-items: center;
-  padding: 0 10em;
+  
  
   
 }

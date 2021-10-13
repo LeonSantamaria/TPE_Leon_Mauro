@@ -51,5 +51,7 @@ class RentalModel{
         $sentencia = $this->db->prepare('INSERT INTO alojamiento(Titulo, Descripcion, Contacto, Tipo, id_ciudad) VALUES(?, ?, ?, ?, ?)');
         $sentencia->execute(array($titulo,$descripcion,$contacto, $tipo , $ciudad));
     }
+    
+
 }
 
