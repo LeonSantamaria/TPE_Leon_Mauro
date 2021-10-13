@@ -14,7 +14,8 @@ class RentalController{
     public function ShowHome(){
         $rents = $this->model->GetRental();
         $categoria = $this->model->GetCategorias();
-        $this->view->MostrarInicio($rents , $categoria);
+        $ciudades = $this->model->GetCategoriasFK();
+        $this->view->MostrarInicio($rents , $categoria, $ciudades);
     }
     public function ShowDetails($id){
         $model = $this->model->GetById($id);
@@ -22,7 +23,7 @@ class RentalController{
 
     }
     public function ShowCategory($category){
-        $model = $this->model->CategoryFilter($category);
+        $model = $this->model->CategoryFilterTipo($category);
         $this->view->MostrarFiltrado($model);
     }
     public function ShowCategoryCiudad($category){

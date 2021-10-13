@@ -1,17 +1,20 @@
 <main>
     <h2 class="display-2 text-primary " style="text-align: center;">Catalogo</h2>
     <hr style="width: 50%; margin: auto;">
-        <div class="categorias">
-        <h5 class="display-5">Categorias :</h5>
+    <div class="categorias">
+        <h5 class="display-5 inline">Filtrar</h5>
             
+            <span class="s-categoria">Tipo</span>
             {foreach from=$categorias item=$categoria }
-                <a href="ShowCategory/{$categoria->Tipo}" class="btn btn-outline-primary">{$categoria->Tipo}</a>
+                <a href="ShowCategory/{$categoria->Tipo}" class="btn btn-outline-primary btn-categoria">{$categoria->Tipo}</a>
             {/foreach}
-
-           
             
-            
-        </div>
+            <span class="s-categoria">Ciudad</span>
+            {foreach from=$ciudades item=$ciudad}
+                <a href="ShowCategoryCiudad/{$ciudad->ciudad}" class="btn btn-outline-primary btn-categoria">{$ciudad->ciudad}</a>
+            {/foreach}
+       
+    </div>
     <div class="clasificados">
         {foreach from=$rental item=rent }
         
