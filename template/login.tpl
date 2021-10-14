@@ -1,12 +1,20 @@
-<div class="formulario-admin bg-primary text-light">
-   
-    <form method="post" action="login">
-        <span>usuario</span>
-        <input type="text" name="user">
-        <span>clave</span>
-        <input type="password" name="pass">
-        <input type="submit" class="btn btn-primary" value="LOGIN">
-    </form>
-    
+<div class="row justify-content-md-center">
+      
+    <div class="container p-md-5 m-md-3 text-center bg-light">
+            <h1 class="p-md-3 m-md-3">Log In</h1>
+            <form class="text-center"action="login" method="post">
+                <div class="d-grid gap-2 col-5 mx-auto">
+                    <div class="p-md-1">
+                        <input type="text" class="form-control" name="user" id="user" placeholder="Usuario" required>
+                    </div>
+                    <div class="p-md-1">
+                        <input type="password" class="form-control" name="pass" id="pass" placeholder="Clave" required>
+                    </div>
+                    <div class="p-md-1">
+                        <input type="submit" class="btn btn-primary" value="Entrar">
+                    </div>
+                </div>
+            </form>       
+        </div>
 
 </div>

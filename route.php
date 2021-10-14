@@ -30,21 +30,40 @@ switch ($params[0]) {
     case 'insertarRental':
         $rentalController->insertarRental(); 
         break;
-    case 'insertUsuarios':
-        $loginController->insertUsuarios(); 
-        break;
-
     case 'ShowCategoryCiudad':
         $rentalController->ShowCategoryCiudad($params[1]); 
         break;
     case 'ShowLogin':
         $rentalController->ShowLogin(); 
         break;
-    case 'ShowRegister':
-        $rentalController->ShowRegister();
+    case 'eliminarAlojamiento':
+        $rentalController->eliminarAlojamiento($params[1]);
+        break;
+    case 'logout':
+        $loginController->logout();
+    case 'eliminarCategoria':
+        $rentalController->eliminarCategoria($params[1]);
+        break;
+    case 'agregarCiudad':
+        $rentalController->agregarCiudad();
+        break;
+    case 'showFormCity':
+        $rentalController->showFormCity();
+        break;
+    case 'modificarCiudad':
+        $rentalController->modificarCiudad($params[1]);
+        break;
+    case 'actualizarCiudad':
+        $rentalController->actualizarCiudad();
+        break;
+    case 'modificarAlojamiento':
+        $rentalController->modificarAlojamiento($params[1]);
+        break;
+    case 'actualizarAlojamiento':
+        $rentalController->actualizarAlojamiento();
         break;
     default:
-      
+      "Problemas en la redireccion";
         break;
 }
 ?>

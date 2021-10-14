@@ -3,23 +3,19 @@
             <div class="col-md-6">
                 <h3>Mapa de sitio</h3>
                 <ul class="nodecoration">
-                    <li>Inicio</li>
-                    {if $logueado}
-                        
-                    <li><a href="ShowAdmin" class="btn btn-dark">Administrar</a></li>
+                    <li class="p-md-1">Inicio</li>
+                    {if $logueado}    
+                        <li class="p-md-1"><a href="{BASE_URL}ShowAdmin" class="btn btn-outline-warning">Sumar Alojamiento</a></li>
+                        <li class="p-md-1"><a href="{BASE_URL}showFormCity" class="btn btn-outline-warning">Sumar Ciudad</a></li>
                     {/if}
-
-                        
-                   
-                    <li>asdasd</li>
                 </ul>
             </div>
             <div class="col-md-6">   
                 <h3>Datos de contacto</h3>
                 <ul class="nodecoration">
-                    <li>Telefono</li>
-                    <li>Email</li>
-                    <li>Instagram</li>
+                    <li class="p-md-1">Telefono</li>
+                    <li class="p-md-1">Email</li>
+                    <li class="p-md-1">Instagram</li>
                 </ul>
             </div>
         </div>
