@@ -4,9 +4,11 @@
                 <h3>Mapa de sitio</h3>
                 <ul class="nodecoration">
                     <li class="p-md-1">Inicio</li>
-                    {if $logueado}    
-                        <li class="p-md-1"><a href="{BASE_URL}ShowAdmin" class="btn btn-outline-warning">Sumar Alojamiento</a></li>
-                        <li class="p-md-1"><a href="{BASE_URL}showFormCity" class="btn btn-outline-warning">Sumar Ciudad</a></li>
+                    {if $logueado}   
+                        {if $admin}
+                            <li class="p-md-1"><a href="{BASE_URL}ShowAdmin" class="btn btn-outline-warning">Sumar Alojamiento</a></li>
+                            <li class="p-md-1"><a href="{BASE_URL}showFormCity" class="btn btn-outline-warning">Sumar Ciudad</a></li>
+                        {/if} 
                     {/if}
                 </ul>
             </div>

@@ -8,7 +8,7 @@ $router = new Router();
 $router->addRoute('rental', 'GET', 'ApiRentalController', 'ObtenerRentals');
 $router->addRoute('rental/:ID', 'GET', 'ApiRentalController', 'ObtenerRental');
 $router->addRoute('rental/:ID', 'DELETE', 'ApiRentalController', 'DeleteRental');
-$router->addRoute('rental', 'POST', 'ApiRentalController', 'asd');
+$router->addRoute('rental', 'POST', 'ApiRentalController', 'addTask');
 $router->addRoute('rental/:ID', 'PUT', 'ApiRentalController', 'asd');
 
 // rutea

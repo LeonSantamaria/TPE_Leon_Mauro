@@ -18,7 +18,7 @@ class LoginController {
         
     }
     public function ShowLogin(){
-        $this->view->MostrarLogin();
+        $this->view->MostrarLogin($_SESSION['rol']);
     }
    
     public function login(){
@@ -26,17 +26,40 @@ class LoginController {
         if(!empty($_POST['user'])&& !empty($_POST['pass'])){
             $userEmail=$_POST['user'];
             $userPassword=$_POST['pass'];
-            $email = $this->model->loginVerify($userEmail);
 
-            if($email && password_verify($userPassword,($email->Password))){
+            $user = $this->model->loginVerify($userEmail);
+            
+            if($user && password_verify($userPassword,($user->Password))){
                 session_start();
                 $_SESSION['user'] = $userEmail; 
-                                  
+            
                 $this->view->MostrarInicio();
             }else{
                 $this->view->MostrarLogin();   
             }
         }
+       
+    }
+    
+    function ShowRegister(){
+        
+        $this->view->MostrarRegistro($this->authHelper->loggedIn());
+        
+    }
+    function register(){
+        if (isset($_POST['usuario']) && ($_POST['email']) && ($_POST['password'])) {
+            $userPassword = password_hash($_POST['password'], PASSWORD_BCRYPT);
+            
+            
+            $this->model->insertUsuario($_POST['usuario'], $_POST['email'], $userPassword);
+            $username = $_POST['usuario'];
+            session_start();
+            $_SESSION['user'] = $username;
+            header("Location: ".BASE_URL."home");
+
+        }
+        
+        
     }
 
      function logout(){

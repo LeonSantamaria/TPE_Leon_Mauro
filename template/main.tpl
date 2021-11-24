@@ -11,8 +11,11 @@
             {foreach from=$ciudades item=$ciudad}
                 <a href="ShowCategoryCiudad/{$ciudad->Ciudad_id}" class="btn btn-outline-primary btn-categoria">{$ciudad->ciudad}</a>
                 {if $logueado}
-                    <a class="btn btn-outline-danger" href="{BASE_URL}eliminarCategoria/{$ciudad->Ciudad_id}" >X</a>
-                    <a class="btn btn-outline-danger" href="{BASE_URL}modificarCiudad/{$ciudad->Ciudad_id}" >M</a>
+                        {if $admin}
+                            <a class="btn btn-outline-danger" href="{BASE_URL}eliminarCategoria/{$ciudad->Ciudad_id}" >X</a>
+                            <a class="btn btn-outline-danger" href="{BASE_URL}modificarCiudad/{$ciudad->Ciudad_id}" >M</a>    
+                        {/if}
+                                            
                 {/if}
             {/foreach}
             {if $error}

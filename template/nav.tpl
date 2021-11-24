@@ -10,6 +10,7 @@
                     {if $logueado}
                         <li class="nav-item "><a href="{BASE_URL}logout" class="nav-link">Salir</a></li>
                     {/if}
+                    <li class="nav-item"><a href="{BASE_URL}ShowRegister" class="nav-link">Registro</a></li>
                 </ul>
             </div>
         </div>

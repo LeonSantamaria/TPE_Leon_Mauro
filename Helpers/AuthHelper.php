@@ -15,4 +15,10 @@ class AuthHelper{
         session_start();
         return isset($_SESSION['user']);
     }
+    function getProps(){
+        session_start();
+        if (isset($_SESSION['user'],$_SESSION['rol'])){ session_abort(); return [$_SESSION['user'],$_SESSION['rol']];}
+        else  {  session_abort();return ["anonimo","usuario"];}
+    }    
+  
 }

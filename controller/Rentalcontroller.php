@@ -2,18 +2,21 @@
 require_once "model/Rentalmodel.php";
 require_once "view/Rentalview.php";
 require_once "Helpers/AuthHelper.php";
+require_once "model/CityModel.php"; 
 
 
 class RentalController{
     private $model; 
     private $view;
+    private $modelcity; 
     private $authHelper;
   
 
     function __construct()
     {
-        $this->model = new RentalModel;
+        $this->model = new RentalModel();
         $this->view = new RentalView();
+        $this->modelcity = new CityModel();
         $this->authHelper = new AuthHelper();
        
     }
@@ -21,8 +24,10 @@ class RentalController{
     function ShowHome(){
         $rents = $this->model->GetRental();
         $categoria = $this->model->GetCategorias();
-        $ciudades = $this->model->GetCategoriasFK();
-        $this->view->MostrarInicio($rents , $categoria, $ciudades, $this->authHelper->loggedIn());
+        $ciudades = $this->modelcity->GetCategoriasFK();
+        $props = $this->authHelper->getProps();
+        
+        $this->view->MostrarInicio($rents , $categoria, $ciudades, $this->authHelper->loggedIn(), $props);
     }
 
     function ShowDetails($id){
@@ -41,13 +46,12 @@ class RentalController{
     }
 
     public function ShowAdmin(){
-        $categorias = $this->model->GetCategoriasFK();
+        $categorias = $this->modelcity->GetCategoriasFK();
         $this->view->MostrarAdmin($categorias, $this->authHelper->loggedIn());
     }
 
     public function insertarRental(){
         
-        $categorias = $this->model->GetCategoriasFK();
         $this->model->insertRental($_POST['titulo'], $_POST['descripcion'], $_POST['contacto'], $_POST['tipo'],$_POST['ciudad']);
         header("Location: ".BASE_URL."home");
     }
@@ -66,47 +70,24 @@ class RentalController{
         $alojamientos = $this->model->CategoryFilterCiudad($id);
 
         if(sizeof($alojamientos) == 0) {
-            $this->model->eliminarCategoria($id);
+            $this->modelcity->eliminarCategoria($id);
             header("Location: ".BASE_URL."home");
         } else {
             $error = 'Error, no se puede eliminar la categoria';
             $rents = $this->model->GetRental();
             $categoria = $this->model->GetCategorias();
-            $ciudades = $this->model->GetCategoriasFK();
-            $this->view->MostrarInicio($rents, $categoria, $ciudades, $this->authHelper->loggedIn(), $error);
+            $ciudades = $this->modelcity->GetCategoriasFK();
+            $this->view->MostrarInicio($rents, $categoria, $ciudades, $this->authHelper->loggedIn(), $error,);
         }   
     }
 
-    function agregarCiudad(){
-        $this->authHelper->checkLoggedIn();
-        if (isset($_POST['ciudad']) && !empty($_POST['ciudad'])){
-            $this->model->agregarCiudad($_POST['ciudad']);
-            header("Location: ".BASE_URL."home");
-        }
-    }
     
-    function showFormCity(){
-        $this->view->showFormCity($this->authHelper->loggedIn());
-    }
-
-    function modificarCiudad($id){
-        $this->authHelper->checkLoggedIn();
-        $ciudad = $this->model->getCategoria($id);
-        $this->view->modificarCiudad($ciudad, true);
-    }
-
-    function actualizarCiudad(){
-        $id = $_POST['id'];
-        $ciudad = $_POST['ciudad'];
-        $this->model->actualizarCiudad($ciudad, $id);
-        header("Location: ".BASE_URL."home"); 
-    }
 
     function modificarAlojamiento($id){
         $alojamiento = $this->model->getAlojamiento($id);
         if ($alojamiento) { //si es distinto de null
             $this->authHelper->checkLoggedIn();
-            $this->view->modificarAlojamiento($alojamiento, $this->model->GetCategoriasFK(), true); //logueado es true xq ya estoy iniciado sesion para poder hacer eso
+            $this->view->modificarAlojamiento($alojamiento, $this->modelcity->GetCategoriasFK(), true); //logueado es true xq ya estoy iniciado sesion para poder hacer eso
         }   
     }
 

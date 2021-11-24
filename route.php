@@ -1,6 +1,7 @@
 <?php
 require_once "controller/Rentalcontroller.php";
 require_once "controller/Logincontroller.php";
+require_once "controller/CityController.php";
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
 if (!empty($_GET['action'])) {
@@ -10,6 +11,7 @@ if (!empty($_GET['action'])) {
 }
 $rentalController = new RentalController();
 $loginController = new LoginController(); 
+$cityController = new CityController();
 $params = explode('/', $action);
 switch ($params[0]) {
     case 'home':  
@@ -45,16 +47,16 @@ switch ($params[0]) {
         $rentalController->eliminarCategoria($params[1]);
         break;
     case 'agregarCiudad':
-        $rentalController->agregarCiudad();
+        $cityController->agregarCiudad();
         break;
     case 'showFormCity':
-        $rentalController->showFormCity();
+        $cityController->showFormCity();
         break;
     case 'modificarCiudad':
-        $rentalController->modificarCiudad($params[1]);
+        $cityController->modificarCiudad($params[1]);
         break;
     case 'actualizarCiudad':
-        $rentalController->actualizarCiudad();
+        $cityController->actualizarCiudad();
         break;
     case 'modificarAlojamiento':
         $rentalController->modificarAlojamiento($params[1]);
@@ -62,6 +64,10 @@ switch ($params[0]) {
     case 'actualizarAlojamiento':
         $rentalController->actualizarAlojamiento();
         break;
+    case 'ShowRegister':
+        $loginController->ShowRegister(); 
+    case 'register': 
+        $loginController->register();
     default:
       "Problemas en la redireccion";
         break;

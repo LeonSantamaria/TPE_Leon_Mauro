@@ -12,11 +12,14 @@ class LoginView {
         
         $this->smarty->assign('logueado', false);
         $this->smarty->display('template/nav.tpl');
+
+    
         $this->smarty->display('template/login.tpl');
         $this->smarty->display('template/footer.tpl');
     }
-    function MostrarRegistro(){
+    function MostrarRegistro($logueado){
         $this->smarty->assign('base_url', BASE_URL);
+        $this->smarty->assign('logueado', $logueado);
         $this->smarty->display('template/head.tpl');
         $this->smarty->display('template/nav.tpl');
         $this->smarty->display('template/register.tpl');

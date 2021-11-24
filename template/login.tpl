@@ -5,7 +5,7 @@
             <form class="text-center"action="login" method="post">
                 <div class="d-grid gap-2 col-5 mx-auto">
                     <div class="p-md-1">
-                        <input type="text" class="form-control" name="user" id="user" placeholder="Usuario" required>
+                        <input type="text" class="form-control" name="user" id="user" placeholder="Email" required>
                     </div>
                     <div class="p-md-1">
                         <input type="password" class="form-control" name="pass" id="pass" placeholder="Clave" required>
