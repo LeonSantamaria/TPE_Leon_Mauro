@@ -29,9 +29,9 @@ class RentalController{
         $this->view->MostrarInicio($rents, $categoria, $ciudades, $this->authHelper->loggedIn(), $this->authHelper->getRole());
     }
 
-    function ShowDetails($id, $error = null){
+    function ShowDetails($id){
         $rent = $this->model->GetById($id);
-        $this->view->MostrarDetalles($rent, $this->authHelper->loggedIn(), $this->authHelper->getRole(), $this->authHelper->getUserID(), $error);
+        $this->view->MostrarDetalles($rent, $this->authHelper->loggedIn(), $this->authHelper->getRole(), $this->authHelper->getUserID());
     }
 
     function ShowCategory($category){
@@ -62,7 +62,7 @@ class RentalController{
             header("Location: ".BASE_URL."home");
         } else {
             $error = "Para eliminar un alojamiento, primero se deben eliminar los comentarios.";
-            $this->ShowDetails($id, $error);
+            $this->view->MostrarInicio($this->model->GetRental(), $this->model->GetCategorias(), $this->modelcity->GetCategoriasFK(), $this->authHelper->loggedIn(), $this->authHelper->getRole(), $error);
         }
     }
 

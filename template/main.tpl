@@ -4,6 +4,11 @@
     <h2 class="display-2 text-primary " style="text-align: center;">Catalogo</h2>
     <hr style="width: 50%; margin: auto;">
     <div class="categorias row justify-content-md-center">
+    {if $error}
+        <div class="container alert alert-danger" role="alert">
+            {$error}
+        </div>
+    {/if}
             <h2 class="text-center">Tipo</h2>
             {foreach from=$categorias item=$categoria }
                 <a href="ShowCategory/{$categoria->Tipo}" class="btn btn-outline-primary btn-categoria">{$categoria->Tipo}</a>
@@ -19,11 +24,6 @@
                     {/if}                       
                 {/if}
             {/foreach}
-            {if $error}
-                <div class="container alert alert-danger" role="alert">
-                    {$error}
-                </div>
-            {/if}
     </div>
     <div class="clasificados">
         {foreach from=$rental item=$rent}
