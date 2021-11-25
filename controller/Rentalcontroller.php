@@ -64,7 +64,6 @@ class RentalController{
             $error = "Para eliminar un alojamiento, primero se deben eliminar los comentarios.";
             $this->ShowDetails($id, $error);
         }
-        
     }
 
     function eliminarCategoria($id){
