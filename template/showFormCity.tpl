@@ -1,3 +1,5 @@
+{include file="./header.tpl"}
+
 <div class="formulario-admin bg-primary text-light">
     <h2>Agregar Ciudad</h2>
 
@@ -9,3 +11,5 @@
         <input type="submit" class="btn btn-light" value="Agregar">
     </form>
 </div>
+
+{include file="./footer.tpl"}

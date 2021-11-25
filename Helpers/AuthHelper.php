@@ -5,20 +5,32 @@ require_once './view/Loginview.php';
 class AuthHelper{
 
     function checkLoggedIn(){ //chequea si esta logueado
-        session_start();
-        if(!isset($_SESSION['user'])) {
+        if(session_status() === PHP_SESSION_NONE) session_start();
+        if(!isset($_SESSION['Email'])) {
             header("Location: ".BASE_URL);
         }
     }
 
-    function loggedIn(){ 
-        session_start();
-        return isset($_SESSION['user']);
+    function getRole() {
+        if(session_status() === PHP_SESSION_NONE) session_start(); //si no esta iniciada la sesion la inicia
+        if(isset($_SESSION['Email'])) {
+            return $_SESSION['Rol']; //obtengo el rol
+        } else {
+            return 0;
+        }
     }
-    function getProps(){
-        session_start();
-        if (isset($_SESSION['user'],$_SESSION['rol'])){ session_abort(); return [$_SESSION['user'],$_SESSION['rol']];}
-        else  {  session_abort();return ["anonimo","usuario"];}
-    }    
+
+    function loggedIn(){ 
+        if(session_status() === PHP_SESSION_NONE) session_start();
+        return $this->getRole() > 0;
+    }  
   
+    function getUserID(){
+        if(session_status() === PHP_SESSION_NONE) session_start();
+        if(isset($_SESSION['Id_usuarios'])){
+            return  $_SESSION['Id_usuarios'];
+        } else {
+            return null;
+        }
+    }
 }

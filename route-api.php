@@ -1,15 +1,14 @@
 <?php
 
 require_once 'libs/Router.php';
-require_once 'controller/ApiRentalController.php';
+require_once './controller/ApiComentarioController.php';
 
 $router = new Router(); 
 
-$router->addRoute('rental', 'GET', 'ApiRentalController', 'ObtenerRentals');
-$router->addRoute('rental/:ID', 'GET', 'ApiRentalController', 'ObtenerRental');
-$router->addRoute('rental/:ID', 'DELETE', 'ApiRentalController', 'DeleteRental');
-$router->addRoute('rental', 'POST', 'ApiRentalController', 'addTask');
-$router->addRoute('rental/:ID', 'PUT', 'ApiRentalController', 'asd');
+$router->addRoute('comentarios/rental/:ID', 'GET', 'ApiComentarioController', 'getComentarios'); //id rental
+//$router->addRoute('comentarios/rental/:ID', 'GET', 'ApiComentarioController', 'getComentario');
+$router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentarioController', 'eliminarComentario'); //id comentario
+$router->addRoute('comentarios/rental/:ID', 'POST', 'ApiComentarioController', 'insertarComentario'); //id rental
 
 // rutea
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

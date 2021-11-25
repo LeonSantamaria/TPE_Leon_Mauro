@@ -1,3 +1,4 @@
+{include file="./header.tpl"}
 
 <div class="clasificados">
         {foreach from=$tipos item=$tipo }
@@ -12,3 +13,6 @@
             </div>
         {/foreach}
 </div>
+
+{include file="./footer.tpl"}
+

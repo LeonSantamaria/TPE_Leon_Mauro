@@ -3,6 +3,7 @@ require_once "model/Rentalmodel.php";
 require_once "view/Rentalview.php";
 require_once "Helpers/AuthHelper.php";
 require_once "model/CityModel.php"; 
+require_once "model/ComentarioModel.php"; 
 
 
 class RentalController{
@@ -10,60 +11,60 @@ class RentalController{
     private $view;
     private $modelcity; 
     private $authHelper;
+    private $comentarioModel;
   
 
-    function __construct()
-    {
+    function __construct() {
         $this->model = new RentalModel();
         $this->view = new RentalView();
         $this->modelcity = new CityModel();
-        $this->authHelper = new AuthHelper();
-       
+        $this->authHelper = new AuthHelper(); 
+        $this->comentarioModel = new ComentarioModel();    
     }
 
     function ShowHome(){
         $rents = $this->model->GetRental();
         $categoria = $this->model->GetCategorias();
-        $ciudades = $this->modelcity->GetCategoriasFK();
-        $props = $this->authHelper->getProps();
-        
-        $this->view->MostrarInicio($rents , $categoria, $ciudades, $this->authHelper->loggedIn(), $props);
+        $ciudades = $this->modelcity->GetCategoriasFK();        
+        $this->view->MostrarInicio($rents, $categoria, $ciudades, $this->authHelper->loggedIn(), $this->authHelper->getRole());
     }
 
-    function ShowDetails($id){
-        $model = $this->model->GetById($id);
-        $this->view->MostrarDetalles($model, $this->authHelper->loggedIn());
+    function ShowDetails($id, $error = null){
+        $rent = $this->model->GetById($id);
+        $this->view->MostrarDetalles($rent, $this->authHelper->loggedIn(), $this->authHelper->getRole(), $this->authHelper->getUserID(), $error);
     }
 
     function ShowCategory($category){
-        $model = $this->model->CategoryFilterTipo($category);
-        $this->view->MostrarFiltrado($model, $this->authHelper->loggedIn());
+        $viviendas = $this->model->CategoryFilterTipo($category);
+        $this->view->MostrarFiltrado($viviendas, $this->authHelper->loggedIn(), $this->authHelper->getRole());
     }
 
     function ShowCategoryCiudad($category){
         $model = $this->model->CategoryFilterCiudad($category);
-        $this->view->MostrarFiltrado($model, $this->authHelper->loggedIn());
+        $this->view->MostrarFiltrado($model, $this->authHelper->loggedIn(), $this->authHelper->getRole());
     }
 
-    public function ShowAdmin(){
+    function ShowAdmin(){
         $categorias = $this->modelcity->GetCategoriasFK();
-        $this->view->MostrarAdmin($categorias, $this->authHelper->loggedIn());
+        $this->view->MostrarAdmin($categorias, $this->authHelper->loggedIn(), $this->authHelper->getRole());
     }
 
     public function insertarRental(){
-        
         $this->model->insertRental($_POST['titulo'], $_POST['descripcion'], $_POST['contacto'], $_POST['tipo'],$_POST['ciudad']);
         header("Location: ".BASE_URL."home");
     }
 
-    function ShowLogin(){
-        $this->view->MostrarLogin($this->authHelper->loggedIn());
-    }
-
     function eliminarAlojamiento($id){
         $this->authHelper->checkLoggedIn();
-        $this->model->eliminarAlojamiento($id);
-        header("Location: ".BASE_URL."home");
+        $comentarios = $this->comentarioModel->getComentariosPorRental($id);
+        if (!$comentarios){
+            $this->model->eliminarAlojamiento($id);
+            header("Location: ".BASE_URL."home");
+        } else {
+            $error = "Para eliminar un alojamiento, primero se deben eliminar los comentarios.";
+            $this->ShowDetails($id, $error);
+        }
+        
     }
 
     function eliminarCategoria($id){
@@ -77,17 +78,15 @@ class RentalController{
             $rents = $this->model->GetRental();
             $categoria = $this->model->GetCategorias();
             $ciudades = $this->modelcity->GetCategoriasFK();
-            $this->view->MostrarInicio($rents, $categoria, $ciudades, $this->authHelper->loggedIn(), $error,);
+            $this->view->MostrarInicio($rents, $categoria, $ciudades, $this->authHelper->loggedIn(), $this->authHelper->getRole(), $error);
         }   
     }
-
-    
 
     function modificarAlojamiento($id){
         $alojamiento = $this->model->getAlojamiento($id);
         if ($alojamiento) { //si es distinto de null
             $this->authHelper->checkLoggedIn();
-            $this->view->modificarAlojamiento($alojamiento, $this->modelcity->GetCategoriasFK(), true); //logueado es true xq ya estoy iniciado sesion para poder hacer eso
+            $this->view->modificarAlojamiento($alojamiento, $this->modelcity->GetCategoriasFK(), true, $this->authHelper->getRole()); //logueado es true xq ya estoy iniciado sesion para poder hacer eso
         }   
     }
 

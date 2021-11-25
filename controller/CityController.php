@@ -21,12 +21,13 @@ class CityController{
         }
     }
     function showFormCity(){
-        $this->view->showFormCity($this->authHelper->loggedIn());
+        $this->authHelper->checkLoggedIn();
+        $this->view->showFormCity($this->authHelper->loggedIn(), $this->authHelper->getRole());
     }
     function modificarCiudad($id){
         $this->authHelper->checkLoggedIn();
         $ciudad = $this->model->getCategoria($id);
-        $this->view->modificarCiudad($ciudad, true);
+        $this->view->modificarCiudad($ciudad, $this->authHelper->getRole(), true);
     }
     function actualizarCiudad(){
         $id = $_POST['id'];

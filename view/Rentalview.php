@@ -6,104 +6,56 @@ class RentalView{
 
     private $smarty;
 
-    function __construct()
-    {
-        $this->smarty = new Smarty();
-        
+    function __construct() {
+        $this->smarty = new Smarty();    
     }
-    function MostrarInicio($rental , $categorias, $ciudades, $logueado, $props, $error = null) {   
-        $this->smarty->assign('categorias', $categorias);
-        $this->smarty->assign('rental', $rental);
-        
-        $this->smarty->assign('ciudades', $ciudades);
+
+    function MostrarInicio($rental , $categorias, $ciudades, $logueado, $rol, $error = null) {   
         $this->smarty->assign('base_url', BASE_URL);
-        $this->smarty->assign('admin', $props);
-        $this->smarty->display('template/head.tpl');
-        
+        $this->smarty->assign('rental', $rental);
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->assign('ciudades', $ciudades);       
         $this->smarty->assign('logueado' , $logueado);
-        $this->smarty->display('template/nav.tpl');
-        
+        $this->smarty->assign('Rol' , $rol);
         $this->smarty->assign('error' , $error);
         $this->smarty->display('template/main.tpl');
-        $this->smarty->display('template/footer.tpl');
     }
 
 
-    function MostrarDetalles($detalles, $logueado){
-        $this->smarty->assign('detalles', $detalles);
-        $this->smarty->display('template/head.tpl');
-
+    function MostrarDetalles($detalle, $logueado, $rol, $id_user = null, $error = null){
         $this->smarty->assign('base_url', BASE_URL);
+        $this->smarty->assign('detalle', $detalle);
         $this->smarty->assign('logueado' , $logueado);
-        $this->smarty->display('template/nav.tpl');
-
+        $this->smarty->assign('Rol', $rol);
+        $this->smarty->assign('Id_usuarios', $id_user);
+        $this->smarty->assign('error', $error);
         $this->smarty->display('template/detalles.tpl');
-        $this->smarty->display('template/footer.tpl');
     }
 
 
-    function MostrarFiltrado($tipo, $logueado){ 
+    function MostrarFiltrado($tipo, $logueado, $rol){
+        $this->smarty->assign('base_url', BASE_URL); 
         $this->smarty->assign('tipos', $tipo);
-        $this->smarty->display('template/head.tpl');
-        $this->smarty->assign('base_url', BASE_URL);
-
         $this->smarty->assign('logueado' , $logueado);
-        $this->smarty->display('template/nav.tpl');
-
+        $this->smarty->assign('Rol', $rol);
         $this->smarty->display('template/categorias.tpl');
-        $this->smarty->display('template/footer.tpl');
     }
 
 
-    function MostrarAdmin($categorias, $logueado){
+    function MostrarAdmin($categorias, $logueado, $rol){
+        $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('categorias', $categorias);
-        $this->smarty->assign('base_url', BASE_URL);
-        $this->smarty->display('template/head.tpl');
-
         $this->smarty->assign('logueado' , $logueado);
-        $this->smarty->display('template/nav.tpl');
-
+        $this->smarty->assign('Rol', $rol);
         $this->smarty->display('template/admin.tpl');
-        $this->smarty->display('template/footer.tpl');
-    }
+    } 
 
-
-    function MostrarLogin($logueado){
+    function modificarAlojamiento($alojamiento, $categorias, $logueado, $rol){
         $this->smarty->assign('base_url', BASE_URL);
-        $this->smarty->display('template/head.tpl');
-
         $this->smarty->assign('logueado' , $logueado);
-        $this->smarty->display('template/nav.tpl');
-
-        $this->smarty->display('template/login.tpl');
-        $this->smarty->display('template/footer.tpl');
-    }
-
-
-    function MostrarRegistro($logueado){
-        $this->smarty->assign('base_url', BASE_URL);
-        $this->smarty->display('template/head.tpl');
-
-        $this->smarty->assign('logueado' , $logueado);
-        $this->smarty->display('template/nav.tpl');
-
-        $this->smarty->display('template/register.tpl');
-        $this->smarty->display('template/footer.tpl');
-    }
-
-    
-
-    
-
-    function modificarAlojamiento($alojamiento, $categorias, $logueado){
-        $this->smarty->display('template/head.tpl');
-
-        $this->smarty->assign('logueado' , $logueado);
-        $this->smarty->display('template/nav.tpl');
-
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('alojamiento', $alojamiento);
+        $this->smarty->assign('Rol', $rol);
         $this->smarty->display('template/actualizarAlojamiento.tpl');
-        $this->smarty->display('template/footer.tpl');
     }
 }

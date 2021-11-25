@@ -21,7 +21,7 @@ class RentalModel{
     function GetById($id){
         $query = $this->db->prepare('SELECT * FROM alojamiento JOIN ciudad ON (alojamiento.id_ciudad=ciudad.Ciudad_id) Where alojamiento.Id=?');
         $query->execute(array($id)); 
-        $rent = $query->fetchAll(PDO::FETCH_OBJ);
+        $rent = $query->fetch(PDO::FETCH_OBJ);
         return $rent;   
     }
 

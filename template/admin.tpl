@@ -1,3 +1,5 @@
+{include file="./header.tpl"}
+
 <div class="formulario-admin bg-primary text-light">
     <h2>Crear Alquiler</h2>
 
@@ -30,3 +32,5 @@
         <input type="submit" class="btn btn-light" value="Guardar">
     </form>
 </div>
+
+{include file="./footer.tpl"}
